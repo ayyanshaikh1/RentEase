@@ -1,0 +1,129 @@
+/* General styling for the navbar */
+.app-header {
+    background-color: black; /* Soft pink background */
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: center; /* Center everything horizontally */
+    align-items: center; /* Center items vertically */
+    width: 100%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px;
+  }
+  
+  /* Styling for the logo/title */
+  .app-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+    margin-right: 50px; /* Add margin to the right for space between the title and links */
+  }
+  
+  .app-title:hover {
+    color: #fff; /* On hover, it remains white */
+  }
+  
+  /* Menu icon (hamburger) */
+  .menu-toggle {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .menu-toggle:hover {
+    color: #f8bbd0; /* Lighter pink on hover */
+  }
+  
+  /* Navbar Links */
+  .nav-links {
+    display: flex;
+    justify-content: center; /* Ensure the links are centered */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-links a,
+  .nav-links button {
+    text-decoration: none;
+    color: white;
+    padding: 12px 20px;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 5px;
+    margin: 0 15px; /* Spacing between links */
+    background-color: #f06292; /* Soft pink button background */
+    border: none;
+    cursor: pointer;
+  }
+  
+  .nav-links a:hover,
+  .nav-links button:hover {
+    color: #f8bbd0; /* Lighter pink text on hover */
+    background-color: #f8bbd0; /* Lighter pink background on hover */
+    transform: scale(1.1); /* Slight zoom effect */
+  }
+  
+  /* Underline animation on hover */
+  .nav-links a::after,
+  .nav-links button::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #f8bbd0; /* Lighter pink underline */
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .nav-links a:hover::after,
+  .nav-links button:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      text-align: center;
+      width: 100%;
+      background-color: #f06292;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      padding: 20px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+  
+    .nav-links.open {
+      display: flex;
+    }
+  
+    .menu-toggle {
+      display: block;
+    }
+  
+    .nav-links a,
+    .nav-links button {
+      padding: 15px 0;
+      font-size: 18px;
+      margin: 10px 0;
+    }
+  }
+  

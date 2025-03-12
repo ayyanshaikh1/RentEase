@@ -1,0 +1,279 @@
+General Styles
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.app-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, rgb(211, 80, 80), rgb(211, 80, 80));
+  padding: 16px;
+}
+/* E color change */
+.btn-E{
+  color: red;
+
+
+}
+
+/* Header */
+.app-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: black;
+  color: white;
+}
+
+.app-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  flex: 1 1 100%;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex: 1 1 100%;
+  
+}
+
+.header-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  background-color: #e0e0e0;
+  border: none;
+  cursor: pointer;
+  margin-right:5px;
+}
+
+/* Main Section */
+.app-main {
+  margin-top: 16px;
+}
+
+.results-header {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.add-localities {
+  font-size: 14px;
+  color: #e53935;
+  text-decoration: underline;
+  margin-top: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.sort-section {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.sort-btn {
+  font-size: 14px;
+  color: #757575;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Listings Grid */
+.listings-grid {
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  margin-top: 24px; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
+  gap: 20px; /* Adjust spacing between cards */
+  justify-content: center;
+
+  
+}
+
+.listing-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: white;
+ 
+}
+
+.listing-img {
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+}
+
+.listing-details {
+  padding: 16px;
+}
+
+.listing-title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.listing-charges {
+  font-size: 14px;
+  color: #757575;
+}
+
+.price-contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.listing-price {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e53935;
+  padding-right: 10px;
+}
+
+.contact-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  background-color: #e53935;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding-left: 30px;
+  text-decoration: none;
+  box-sizing: border-box;
+  width: auto; /* Adjust width to fit text */
+  transition: 0.3s;
+  font-style: 12px;
+  text-align:justify;
+}
+
+/* Card Footer */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.footer-btn {
+  background: none;
+  border: none;
+  color: #757575;
+  cursor: pointer;
+}
+
+
+/* Responsive Design */
+@media (max-width: 1500px) {
+  .app-header {
+    flex-direction: column;
+  }
+
+  .header-buttons {
+    margin-top: 8px;
+  }
+
+  .results-header {
+    font-size: 16px;
+  }
+
+  .listing-card {
+    font-size: 14px;
+    width: 45%; /* Adjust width to fit 2 per row */
+    min-width: 300px;
+  }
+
+  .listings-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  /* new */
+/* Basic styles for the navigation bar */
+
+/* navbar.css */
+
+/* Style for the entire navbar */
+/* General styling for the navbar */
+.app-header {
+  background-color: #333;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* position: fixed; */
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.app-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    background-color: #333;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+
+}
+
