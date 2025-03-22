@@ -1,3 +1,20 @@
 {
-    "cmake.sourceDirectory": "C:/Users/hp/mini-project/node_modules/nan"
+    "cmake.sourceDirectory": "C:/Users/hp/mini-project/node_modules/nan",
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "xprotocol",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 33060,
+            "driver": "MySQL",
+            "name": "MYSQL Local",
+            "database": "college",
+            "username": "root",
+            "connectionTimeout": 30,
+            "password": "Networld@123"
+        }
+    ]
 }

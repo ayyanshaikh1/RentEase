@@ -1,5 +1,5 @@
 .contact-btn {
-    background: linear-gradient(135deg, rgb(178, 78, 94), rgb(178, 114, 125)); /* Gradient effect */
+    background: linear-gradient(135deg, red); /* Gradient effect */
     color: white;
     padding: 6px 14px; /* Small and compact */
     border-radius: 20px; /* Rounded edges */

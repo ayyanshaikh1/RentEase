@@ -1,63 +1,85 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import LocationDropdown from "./components/LocationDropdown";
 import Contact from "./components/Contact";
+import Buy from "./components/Buy";
 import "./App.css";
 import "./footer.css";
-import "./navbar.css"
+import "./navbar.css";
+import "./filter.css";
 
 const Home = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [selectedArea, setSelectedArea] = useState("All");
 
   const listings = [
     { id: 1, location: "Bansi Nagar", price: "₹5000", description: "Room for rent in Bansi Nagar", imageUrl: "room1.jpg" },
     { id: 2, location: "Vasudev Nagar", price: "₹6500", description: "Room for rent in Vasudev Nagar", imageUrl: "room2.jpg" },
     { id: 3, location: "Vasudev Nagar", price: "₹7000", description: "Spacious 1BHK in Vasudev Nagar", imageUrl: "room1.jpg" },
     { id: 4, location: "Shivaji Nagar", price: "₹8000", description: "Room for rent in Bansi Nagar", imageUrl: "room2.jpg" },
-    { id: 5, location: "Vasudev Nagar", price: "₹8000", description: "Room for rent in Bansi Nagar", imageUrl: "room2.jpg" },
+    { id: 5, location: "Vasudev Nagar", price: "₹8000", description: "Spacious 1BHK in Vasudev Nagar", imageUrl: "room2.jpg" },
     { id: 6, location: "Shivaji Nagar", price: "₹8000", description: "Room for rent in Bansi Nagar", imageUrl: "room2.jpg" },
-    { id: 7, location: "Vasudev Nagar", price: "₹8000", description: "Room for rent in Bansi Nagar", imageUrl: "room2.jpg" },
+    { id: 7, location: "Vasudev Nagar", price: "₹8000", description: "Spacious 1BHK in Vasudev Nagar", imageUrl: "room2.jpg" },
     { id: 8, location: "Shivaji Nagar", price: "₹8000", description: "Room for rent in Bansi Nagar", imageUrl: "room2.jpg" },
-    { id: 9, location: "Shivaji Nagar", price: "₹8000", description: "Room for rent in Bansi Nagar", imageUrl: "room2.jpg" },
+    { id: 9, location: "Shivaji Nagar", price: "₹8000", description: "Spacious 1BHK in Vasudev Nagar", imageUrl: "room2.jpg" },
     { id: 10, location: "Vasudev Nagar", price: "₹8000", description: "Room for rent in Bansi Nagar", imageUrl: "room2.jpg" },
-    { id: 11, location: "Shivaji Nagar", price: "₹8000", description: "Room for rent in Bansi Nagar", imageUrl: "room2.jpg" },
+    { id: 11, location: "Shivaji Nagar", price: "₹8000", description: "Spacious 1BHK in Vasudev Nagar", imageUrl: "room2.jpg" },
     { id: 12, location: "Shivaji Nagar", price: "₹8000", description: "Room for rent in Bansi Nagar", imageUrl: "room2.jpg" },
   ];
+  // Unique locations for filtering
+  const uniqueAreas = ["All", ...new Set(listings.map((listing) => listing.location))];
+
+  // Filtered listings based on selection
+  const filteredListings = selectedArea === "All" ? listings : listings.filter((listing) => listing.location === selectedArea);
 
   return (
     <div className="app-container">
+      {/* Header */}
       <header className="app-header">
         <h1 className="app-title">Rent<span className="btn-E">E</span>ase</h1>
-        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="menu-toggle">
-          ☰
-        </button>
-        <nav className={`nav-links ${isMenuOpen ? "open" : ""}`}>
+        <nav className="nav-links">
           <Link to="/" className="header-btn">Home</Link>
           <Link to="/contact" className="header-btn">Contact</Link>
-          <button className="header-btn">Buy</button>
-          <button className="header-btn">Rent</button>
-          <button className="header-btn">Sell</button>
+          <Link to="/Buy" className="header-btn">Buy</Link>
+          <Link to="/" className="header-btn">Rent</Link>
+
+         
         </nav>
       </header>
 
-      <main className="app-main">
-        <LocationDropdown />
-        <h2 className="results-header">Available Listings</h2>
-        <div className="listings-grid">
-          {listings.map((listing) => (
-            <div key={listing.id} className="listing-card">
-              <img src={listing.imageUrl} alt={listing.description} className="listing-img" />
-              <div className="listing-details">
-                <h3 className="listing-title">{listing.description}</h3>
-                <span className="listing-price">{listing.price}</span>
-                <Link to="/contact" className="contact-btn">Contact Owner</Link>
-              </div>
-            </div>
+      {/* 🔹 Filter Section */}
+      <div className="filter-container">
+        <label className="filter-label">📍 Select Area:</label>
+        <select className="filter-dropdown" value={selectedArea} onChange={(e) => setSelectedArea(e.target.value)}>
+          {uniqueAreas.map((area, index) => (
+            <option key={index} value={area}>{area}</option>
           ))}
+        </select>
+      </div>
+
+      {/* Listings */}
+      <main className="app-main">
+        <h2 className="results-header">🏠 Available Listings</h2>
+        <div className="listings-grid">
+          {filteredListings.length > 0 ? (
+            filteredListings.map((listing) => (
+              <div key={listing.id} className="listing-card">
+                <img src={listing.imageUrl} alt={listing.description} className="listing-img" />
+                <div className="listing-details">
+                  <h3 className="listing-title">{listing.description}</h3>
+                  <span className="listing-price">{listing.price}</span>
+                  <div className="button-container">
+                    <Link to="/contact" className="contact-btn">Contact Owner</Link>
+                    <Link to="/Buy" className="contact-btn">Buy</Link>
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p className="no-results">No listings available for {selectedArea}</p>
+          )}
         </div>
       </main>
 
-      {/* footer */}
+      {/* 🔹 Footer Section */}
       <footer className="app-footer">
         <div className="footer-content">
           <div className="footer-about">
@@ -86,8 +108,11 @@ const Home = () => {
           </div>
 
           <div className="footer-contact">
-            <p>📧 Email: <strong> ayyansk1110@gmail.com</strong></p>
-            <p>📞 Phone: <strong>+91  9022609868</strong></p>
+            <p>📧 Email: <strong>ayyansk1110@gmail.com</strong></p>
+            <p>📞 Phone: <strong>+91 9022609868</strong></p>
+           
+            
+
           </div>
         </div>
       </footer>
@@ -100,6 +125,7 @@ const App = () => (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/Buy" element={<Buy />} />
     </Routes>
   </Router>
 );

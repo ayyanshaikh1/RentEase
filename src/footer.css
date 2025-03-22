@@ -6,6 +6,9 @@
     flex-direction: column;
     min-height: 100vh;
   }
+  .btn-E{
+    color: red;
+  }
   
   .app-main {
     flex-grow: 1;
